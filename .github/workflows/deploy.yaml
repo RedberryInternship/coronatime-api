@@ -15,5 +15,6 @@ jobs:
           script: |
             cd apps
             cd coronatime-api
+            git pull
             npm ci
             pm2 restart coronatime-api
