@@ -6,6 +6,8 @@ info:
 servers:
   - url: http://localhost:4000/api
     description: local server
+  - url: https://coronatime-api.devtest.ge
+    description: production server
 
 paths:
   /countries:
