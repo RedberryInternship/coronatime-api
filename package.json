@@ -2,10 +2,10 @@
   "name": "coronatime-api",
   "version": "1.0.0",
   "description": "Coronatime API for front-end",
-  "main": "server.mjs",
+  "main": "src/server.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "dev": "nodemon"
+    "dev": "nodemon ./src/server.js"
   },
   "author": "giuna",
   "license": "ISC",
@@ -14,6 +14,8 @@
   },
   "type": "module",
   "devDependencies": {
-    "nodemon": "^2.0.16"
+    "nodemon": "^2.0.16",
+    "swagger-ui-express": "^4.3.0",
+    "yamljs": "^0.3.0"
   }
 }
