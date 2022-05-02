@@ -1,1 +1,1 @@
-export {default as synchronizeCountries} from './synchronize-countries.js'
+export { default as synchronizeCountries } from './synchronize-countries.js';

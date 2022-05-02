@@ -1,1 +1,1 @@
-export {default as swagger} from './swagger.js'
+export { default as swagger } from './swagger.js';

@@ -1,13 +1,13 @@
-import mongoose from "mongoose";
+import mongoose from 'mongoose';
 
-const {Schema} = mongoose;
+const { Schema } = mongoose;
 
 const countrySchema = new Schema({
-    code: String,
-    name: {
-        en: String,
-        ka: String,
-    },
+  code: String,
+  name: {
+    en: String,
+    ka: String,
+  },
 });
 
 const Country = mongoose.model('Country', countrySchema);

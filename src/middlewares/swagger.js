@@ -1,14 +1,14 @@
-import SwaggerUI from 'swagger-ui-express'
-import YAML from 'yamljs'
+import SwaggerUI from 'swagger-ui-express';
+import YAML from 'yamljs';
 
 const swagger = () => {
-    const options = {
-        customCss: '.swagger-ui .topbar { display: none }',
-        customSiteTitle: 'Coronatime API Specs'
-    }
+  const options = {
+    customCss: '.swagger-ui .topbar { display: none }',
+    customSiteTitle: 'Coronatime API Specs',
+  };
 
-    const swaggerDocument = YAML.load('./src/config/swagger.yaml');
-    return [SwaggerUI.serve, SwaggerUI.setup(swaggerDocument, options)];
-}
+  const swaggerDocument = YAML.load('./src/config/swagger.yaml');
+  return [SwaggerUI.serve, SwaggerUI.setup(swaggerDocument, options)];
+};
 
-export default swagger
+export default swagger;
