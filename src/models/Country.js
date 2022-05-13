@@ -3,10 +3,16 @@ import mongoose from 'mongoose';
 const { Schema } = mongoose;
 
 const countrySchema = new Schema({
-  code: String,
+  code: Schema.Types.String,
   name: {
-    en: String,
-    ka: String,
+    en: Schema.Types.String,
+    ka: Schema.Types.String,
+  },
+  statistics: {
+    confirmed: Schema.Types.Mixed,
+    recovered: Schema.Types.Number,
+    critical: Schema.Types.Number,
+    deaths: Schema.Types.Number,
   },
 });
 

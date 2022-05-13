@@ -4,17 +4,19 @@
   "description": "Coronatime API for front-end",
   "main": "src/server.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "dev": "nodemon ./src/server.js"
+    "dev": "nodemon ./src/server.js",
+    "countries:fetch": "node ./src/bin/fetch-countries.js",
+    "countries:delete": "node ./src/bin/delete-countries.js",
+    "countries:sync": "node ./src/bin/sync-countries.js"
   },
   "author": "giuna",
   "license": "ISC",
   "dependencies": {
     "axios": "^0.27.2",
+    "chalk": "^5.0.1",
     "dotenv": "^16.0.0",
     "express": "^4.18.1",
-    "mongoose": "^6.3.1",
-    "node-cron": "^3.0.0"
+    "mongoose": "^6.3.1"
   },
   "type": "module",
   "devDependencies": {
