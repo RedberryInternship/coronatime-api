@@ -1,9 +1,9 @@
 import SwaggerUI from 'swagger-ui-express';
 import YAML from 'yamljs';
 
-const swagger = () => {
+const swaggerMiddleware = () => {
   const options = {
-    customCss: '.swagger-ui .topbar { display: none }',
+    customCss: '.swaggerMiddleware-ui .topbar { display: none }',
     customSiteTitle: 'Coronatime API Specs',
   };
 
@@ -11,4 +11,4 @@ const swagger = () => {
   return [SwaggerUI.serve, SwaggerUI.setup(swaggerDocument, options)];
 };
 
-export default swagger;
+export default swaggerMiddleware;

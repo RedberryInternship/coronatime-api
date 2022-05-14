@@ -1,5 +1,5 @@
 import express from 'express';
-import { swagger } from './middlewares/index.js';
+import { swaggerMiddleware } from './middlewares/index.js';
 import apiRouter from './routes/api.js';
 import dotenv from 'dotenv';
 import connectToMongo from './config/mongo.js';
@@ -12,7 +12,7 @@ connectToMongo();
 
 server.use(bodyParser.json());
 server.use('/api', apiRouter);
-server.use('/', swagger());
+server.use('/', swaggerMiddleware());
 
 server.listen(process.env.SERVER_PORT, () =>
   console.log(chalk.whiteBright.bgBlue(`I'm running on http://localhost:4000`))

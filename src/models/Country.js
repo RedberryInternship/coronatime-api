@@ -14,6 +14,10 @@ const countrySchema = new Schema({
     critical: Schema.Types.Number,
     deaths: Schema.Types.Number,
   },
+  __v: {
+    type: Schema.Types.Number,
+    select: false,
+  },
 });
 
 const Country = mongoose.model('Country', countrySchema);

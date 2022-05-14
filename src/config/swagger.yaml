@@ -9,11 +9,20 @@ servers:
   - url: https://coronatime-api.devtest.ge/api
     description: production server
 
+components:
+  securitySchemes:
+    bearerAuth:
+      type: http
+      scheme: bearer
+      bearerFormat: JWT
+
 paths:
   /countries:
     get:
       tags:
         - Countries and Statistics
+      security:
+        - bearerAuth: []
       responses:
         '200':
           description: Successfully fetched
@@ -81,7 +90,5 @@ paths:
             application/json:
               example:
                 token: some-token
-
-
 
 
