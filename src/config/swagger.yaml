@@ -12,12 +12,76 @@ servers:
 paths:
   /countries:
     get:
-      summary: Get countries
+      tags:
+        - Countries and Statistics
       responses:
         '200':
+          description: Successfully fetched
           content:
             application/json:
               schema:
                 type: array
                 items:
                   type: string
+  /register:
+    post:
+      tags:
+        - Auth
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                username:
+                  type: string
+                  required: true
+                email:
+                  type: string
+                  required: true
+                password:
+                  type: string
+                  required: true
+                repeatPassword:
+                  type: string
+                  required: true
+              example:
+                username: gela
+                email: gela@redberry.ge
+                password: amilaxvari
+                repeatPassword: amilaxvari
+      responses:
+        '201':
+          description: Sucessfully registered
+          content:
+            application/json:
+              schema:
+  /login:
+    post:
+      tags:
+        - Auth
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                username:
+                  type: string
+                  required: true
+                password:
+                  type: string
+                  required: true
+            example:
+              username: gela
+              password: amilaxvari
+      responses:
+        '200':
+          content:
+            application/json:
+              example:
+                token: some-token
+
+
+
+

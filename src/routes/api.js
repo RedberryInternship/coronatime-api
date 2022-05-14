@@ -1,11 +1,11 @@
 import express from 'express';
-import { Country } from '../models/index.js';
+import { register, login } from '../controllers/auth-controller.js';
+import { getAllCountries } from '../controllers/countries-controller.js';
 
 const router = express.Router();
 
-router.get('/countries', async (req, res) => {
-  const data = await Country.find();
-  res.json(data);
-});
+router.get('/countries', getAllCountries);
+router.post('/register', register);
+router.post('/login', login);
 
 export default router;
