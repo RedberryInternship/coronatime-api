@@ -5,7 +5,7 @@ import {
 } from '../schemas/index.js';
 import { sendPasswordRecoveryLink } from '../mail/index.js';
 import { PasswordRecovery, User } from '../models/index.js';
-import bcrypt from "bcrypt";
+import bcrypt from 'bcrypt';
 
 export const sendPasswordRecoveryMail = async (req, res) => {
   const validator = await sendPasswordRecoverySchema(req.body);
@@ -41,7 +41,7 @@ export const recoverPassword = async (req, res) => {
   } else {
     const { password, hash } = validated;
 
-  const passwordRecoveryRecord = await PasswordRecovery.findOne({ hash });
+    const passwordRecoveryRecord = await PasswordRecovery.findOne({ hash });
 
     if (!passwordRecoveryRecord) {
       res.status(422).json({
@@ -51,7 +51,7 @@ export const recoverPassword = async (req, res) => {
       await passwordRecoveryRecord.populate('user');
       const salt = bcrypt.genSalt(10);
       const hashedPassword = await bcrypt.hash(password, salt);
-      passwordRecoveryRecord.user.
+      // passwordRecoveryRecord.user.
     }
   }
 };
