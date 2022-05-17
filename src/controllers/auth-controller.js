@@ -1,4 +1,6 @@
-import { User } from '../models/index.js';
+import { AccountVerification, User } from '../models/index.js';
+import { sendConfirmAccountMail } from '../mail/index.js';
+import crypto from 'crypto';
 import bcrypt from 'bcrypt';
 import jwt from 'jsonwebtoken';
 import { registrationSchema, authorizationSchema } from '../schemas/index.js';
@@ -16,11 +18,21 @@ export const register = async (req, res) => {
   const salt = await bcrypt.genSalt(10);
   const hashedPassword = await bcrypt.hash(password, salt);
 
-  await User.create({
+  const user = await User.create({
     username,
     email,
     password: hashedPassword,
+    confirmed: false,
   });
+
+  const verificationHash = crypto.randomBytes(48).toString('hex');
+
+  await AccountVerification.create({
+    hash: verificationHash,
+    user: user._id,
+  });
+
+  await sendConfirmAccountMail({ to: email, hash: verificationHash });
 
   res.status(201).send();
 };
@@ -48,5 +60,32 @@ export const login = async (req, res) => {
     res.json({ token });
   } else {
     res.status(401).json({ message: 'please, provide correct credentials...' });
+  }
+};
+
+export const confirmAccount = async (req, res) => {
+  const { hash } = req.query;
+
+  if (!hash) {
+    res.status(401).send();
+  } else {
+    const accountVerification = await AccountVerification.findOne({ hash });
+    if (!accountVerification) {
+      res.status(401).send();
+      return;
+    }
+    await accountVerification.populate('user');
+
+    if (accountVerification.user.confirmed) {
+      res.status(401).send();
+    } else {
+      accountVerification.user.confirmed = true;
+      await accountVerification.user.save();
+      await accountVerification.delete();
+
+      res.json({
+        success: true,
+      });
+    }
   }
 };

@@ -9,6 +9,7 @@ const userSchema = new Schema({
     type: Schema.Types.String,
     select: false,
   },
+  confirmed: Schema.Types.Boolean,
   __v: {
     type: Schema.Types.Number,
     select: false,

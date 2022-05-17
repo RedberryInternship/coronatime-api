@@ -90,5 +90,32 @@ paths:
             application/json:
               example:
                 token: some-token
+  /password/send-recovery-link:
+    post:
+      tags:
+        - Auth
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                email:
+                  type: string
+                  required: true
+                backlink:
+                  type: string
+                  required:
+                  description: URL on which user will be redirected from email link
+            example:
+              email: gela@redberry.ge
+              backlink: https://coronatime.giuna.redberryinternship.ge/password-recovery
+      responses:
+        '200':
+          description: mail sent successfully
+          content:
+            application/json:
+              example:
+                message: password recovery mail sent successfully
 
 

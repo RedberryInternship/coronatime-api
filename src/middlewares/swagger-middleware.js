@@ -3,7 +3,7 @@ import YAML from 'yamljs';
 
 const swaggerMiddleware = () => {
   const options = {
-    customCss: '.swaggerMiddleware-ui .topbar { display: none }',
+    customCss: '.swagger-ui .topbar { display: none }',
     customSiteTitle: 'Coronatime API Specs',
   };
 
