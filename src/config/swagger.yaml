@@ -54,11 +54,15 @@ paths:
                 repeatPassword:
                   type: string
                   required: true
+                redirectOnConfirm:
+                  type: string
+                  required: true
               example:
                 username: gela
                 email: gela@redberry.ge
                 password: amilaxvari
                 repeatPassword: amilaxvari
+                redirectOnConfirm: https://coronatime.giuna.redberryinternship.ge/confirm-account
       responses:
         '201':
           description: Sucessfully registered
@@ -90,10 +94,31 @@ paths:
             application/json:
               example:
                 token: some-token
-  /password/send-recovery-link:
+  /confirm-account:
     post:
       tags:
         - Auth
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                hash:
+                  type: string
+                  required: true
+            example:
+              hash: 6283b36ccb785c87b46ee64f
+      responses:
+        '200':
+          description: Successfully confirmed user account
+          content:
+            application/json:
+              schema:
+  /password/send-recovery-link:
+    post:
+      tags:
+        - Password Recovery
       requestBody:
         content:
           application/json:
@@ -117,5 +142,35 @@ paths:
             application/json:
               example:
                 message: password recovery mail sent successfully
+  /password/recover:
+    post:
+      tags:
+        - Password Recovery
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                hash:
+                  type: string
+                  required: true
+                password:
+                  type: string
+                  required: true
+                repeatPassword:
+                  type: string
+                  required: true
+            example:
+              hash: 6283b36ccb785c87b46ee64f
+              password: amilaxvari
+              repeatPassword: amilaxvari
+
+      responses:
+        '200':
+          description: Successfully recovered password
+          content:
+            application/json:
+              schema:
 
 

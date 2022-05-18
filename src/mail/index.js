@@ -17,10 +17,9 @@ const sendMail = ({ to, subject, html }) => {
   return gmailTransport.sendMail(options);
 };
 
-export const sendConfirmAccountMail = async ({ to, hash }) => {
-  const baseURL = process.env.APP_URL;
+export const sendConfirmAccountMail = async ({ to, hash, backLink }) => {
   const html = edge.renderSync('confirm-account', {
-    link: baseURL + '/confirm-account?hash=' + hash,
+    link: backLink + '?hash=' + hash,
   });
   return sendMail({ to, subject: 'Confirm Account', html });
 };

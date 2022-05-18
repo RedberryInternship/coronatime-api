@@ -14,7 +14,7 @@ export const register = async (req, res) => {
     return res.status(422).json(error.details);
   }
 
-  const { username, email, password } = data;
+  const { username, email, password, redirectOnConfirm } = data;
   const salt = await bcrypt.genSalt(10);
   const hashedPassword = await bcrypt.hash(password, salt);
 
@@ -32,7 +32,11 @@ export const register = async (req, res) => {
     user: user._id,
   });
 
-  await sendConfirmAccountMail({ to: email, hash: verificationHash });
+  await sendConfirmAccountMail({
+    to: email,
+    hash: verificationHash,
+    backLink: redirectOnConfirm,
+  });
 
   res.status(201).send();
 };
@@ -64,7 +68,7 @@ export const login = async (req, res) => {
 };
 
 export const confirmAccount = async (req, res) => {
-  const { hash } = req.query;
+  const { hash } = req.body;
 
   if (!hash) {
     res.status(401).send();
