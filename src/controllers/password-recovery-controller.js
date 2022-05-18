@@ -51,7 +51,10 @@ export const recoverPassword = async (req, res) => {
       await passwordRecoveryRecord.populate('user');
       const salt = bcrypt.genSalt(10);
       const hashedPassword = await bcrypt.hash(password, salt);
-      // passwordRecoveryRecord.user.
+      passwordRecoveryRecord.user.password = hashedPassword;
+      await passwordRecoveryRecord.user.save();
+      await passwordRecoveryRecord.delete();
+      res.status(200).send();
     }
   }
 };
