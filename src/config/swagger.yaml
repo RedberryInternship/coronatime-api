@@ -4,11 +4,10 @@ info:
   version: 1.0.0
 
 servers:
-  - url: http://localhost:4000/api
-    description: local server
   - url: https://coronatime-api.devtest.ge/api
     description: production server
-
+  - url: http://localhost:4000/api
+    description: local server
 components:
   securitySchemes:
     bearerAuth:
