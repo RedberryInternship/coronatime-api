@@ -6,6 +6,7 @@ import dotenv from 'dotenv';
 import connectToMongo from './config/mongo.js';
 import chalk from 'chalk';
 import bodyParser from 'body-parser';
+import cors from 'cors';
 
 const server = express();
 dotenv.config();
@@ -13,7 +14,7 @@ connectToMongo();
 
 server.use(bodyParser.json());
 server.use('/', webRouter);
-server.use('/api', apiRouter);
+server.use('/api', cors(), apiRouter);
 server.use('/', swaggerMiddleware());
 
 server.listen(process.env.SERVER_PORT, () =>
