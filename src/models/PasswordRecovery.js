@@ -1,6 +1,6 @@
-import mongoose from 'mongoose';
+import mongoose from 'mongoose'
 
-const { Schema } = mongoose;
+const { Schema } = mongoose
 
 const passwordRecoverySchema = new Schema({
   user: {
@@ -8,11 +8,11 @@ const passwordRecoverySchema = new Schema({
     ref: 'User',
   },
   hash: Schema.Types.String,
-});
+})
 
 const PasswordRecovery = mongoose.model(
   'PasswordRecovery',
   passwordRecoverySchema
-);
+)
 
-export default PasswordRecovery;
+export default PasswordRecovery

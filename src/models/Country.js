@@ -1,6 +1,6 @@
-import mongoose from 'mongoose';
+import mongoose from 'mongoose'
 
-const { Schema } = mongoose;
+const { Schema } = mongoose
 
 const countrySchema = new Schema({
   code: Schema.Types.String,
@@ -18,8 +18,8 @@ const countrySchema = new Schema({
     type: Schema.Types.Number,
     select: false,
   },
-});
+})
 
-const Country = mongoose.model('Country', countrySchema);
+const Country = mongoose.model('Country', countrySchema)
 
-export default Country;
+export default Country

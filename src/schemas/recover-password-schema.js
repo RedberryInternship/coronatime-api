@@ -1,4 +1,4 @@
-import Joi from 'joi';
+import Joi from 'joi'
 
 const recoverPasswordSchema = Joi.object({
   password: Joi.string().alphanum().required().messages({
@@ -11,6 +11,6 @@ const recoverPasswordSchema = Joi.object({
     'string.base': 'hash field should be string.',
     'any.required': 'hash field is required.',
   }),
-});
+})
 
-export default recoverPasswordSchema;
+export default recoverPasswordSchema

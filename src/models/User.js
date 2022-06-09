@@ -1,6 +1,6 @@
-import mongoose from 'mongoose';
+import mongoose from 'mongoose'
 
-const { Schema } = mongoose;
+const { Schema } = mongoose
 
 const userSchema = new Schema({
   username: Schema.Types.String,
@@ -14,8 +14,8 @@ const userSchema = new Schema({
     type: Schema.Types.Number,
     select: false,
   },
-});
+})
 
-const User = mongoose.model('User', userSchema);
+const User = mongoose.model('User', userSchema)
 
-export default User;
+export default User

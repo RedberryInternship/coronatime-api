@@ -1,12 +1,15 @@
 {
   "extends": [
-    "eslint:recommended",
-    "plugin:node/recommended",
-    "prettier"
-  ],
+      "airbnb-base",
+      "prettier"
+    ],
   "plugins": ["prettier"],
   "rules": {
-    "prettier/prettier": "error",
-    "node/no-unsupported-features/es-syntax": "off"
+      "prettier/prettier": "error",
+      "no-console": "off",
+      "no-restricted-syntax": "off",
+      "no-underscore-dangle": "off",
+      "import/prefer-default-export": "off",
+      "import/extensions": "off"
   }
 }

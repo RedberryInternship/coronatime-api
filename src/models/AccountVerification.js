@@ -1,6 +1,6 @@
-import mongoose from 'mongoose';
+import mongoose from 'mongoose'
 
-const { Schema } = mongoose;
+const { Schema } = mongoose
 
 const accountVerificationSchema = new Schema({
   user: {
@@ -8,11 +8,11 @@ const accountVerificationSchema = new Schema({
     ref: 'User',
   },
   hash: Schema.Types.String,
-});
+})
 
 const AccountVerification = mongoose.model(
   'accountVerification',
   accountVerificationSchema
-);
+)
 
-export default AccountVerification;
+export default AccountVerification
