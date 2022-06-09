@@ -27,7 +27,7 @@
     "swagger-ui-express": "^4.4.0",
     "yamljs": "^0.3.0"
   },
-  "type": "module",
+  "type": "commonjs",
   "devDependencies": {
     "@types/nodemailer": "^6.4.4",
     "eslint": "^8.17.0",
