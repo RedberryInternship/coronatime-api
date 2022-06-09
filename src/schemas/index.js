@@ -1,4 +1,11 @@
-export { default as registrationSchema } from './registration-schema.js';
-export { default as authorizationSchema } from './authorization-schema.js';
-export { default as sendPasswordRecoverySchema } from './send-password-recovery-mail-schema.js';
-export { default as recoverPasswordSchema } from './recover-password-schema.js';
+const registrationSchema = require('./registration-schema')
+const authorizationSchema = require('./authorization-schema')
+const sendPasswordRecoverySchema = require('./send-password-recovery-mail-schema')
+const recoverPasswordSchema = require('./recover-password-schema')
+
+module.exports = {
+  registrationSchema,
+  authorizationSchema,
+  sendPasswordRecoverySchema,
+  recoverPasswordSchema,
+}

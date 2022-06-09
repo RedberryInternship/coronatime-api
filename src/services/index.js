@@ -1,13 +1,15 @@
-import axios from 'axios';
+const axios = require('axios')
 
 const instance = axios.create({
-  baseURL: 'https://devtest.ge',
-});
+  baseURL: process.env.APP_URL,
+})
 
-export const getCountriesRequest = () => {
-  return instance.get('/countries');
-};
+const getCountriesRequest = () => instance.get('/countries')
 
-export const getCountryStatisticsRequest = (code) => {
-  return instance.post('/get-country-statistics', { code });
-};
+const getCountryStatisticsRequest = (code) =>
+  instance.post('/get-country-statistics', { code })
+
+module.exports = {
+  getCountriesRequest,
+  getCountryStatisticsRequest,
+}

@@ -1,23 +1,22 @@
-import chalk from 'chalk';
-import connectToToDB from '../config/mongo.js';
-import { Country } from '../models/index.js';
-import dotenv from 'dotenv';
+const dotenv = require('dotenv')
+const chalk = require('chalk')
+const connectToToDB = require('../config/mongo')
+const { Country } = require('../models/index')
 
-dotenv.config();
-
-(async () => {
-  let mongoose = null;
+dotenv.config()
+;(async () => {
+  let mongoose = null
   try {
-    mongoose = await connectToToDB();
+    mongoose = await connectToToDB()
   } catch (e) {
-    throw new Error('Mongo error:' + e.message);
+    throw new Error(`Mongo error:${e.message}`)
   }
 
   try {
-    await Country.deleteMany();
-    console.log(chalk.underline.bold.blue('Countries have been deleted!'));
-    await mongoose.connection.close();
+    await Country.deleteMany()
+    console.log(chalk.underline.bold.blue('Countries have been deleted!'))
+    await mongoose.connection.close()
   } catch (e) {
-    console.log(chalk.red.bold.underline(e.message));
+    console.log(chalk.red.bold.underline(e.message))
   }
-})();
+})()

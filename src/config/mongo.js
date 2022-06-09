@@ -1,12 +1,12 @@
-import mongoose from 'mongoose';
+const mongoose = require('mongoose')
 
 const connect = async () => {
   try {
-    const connectionURL = `mongodb://${process.env.MONGO_HOST}:${process.env.MONGO_PORT}/${process.env.MONGO_DATABASE}`;
-    return mongoose.connect(connectionURL);
+    const connectionURL = `mongodb://${process.env.MONGO_HOST}:${process.env.MONGO_PORT}/${process.env.MONGO_DATABASE}`
+    return mongoose.connect(connectionURL)
   } catch (e) {
-    console.log(e);
+    console.log(e)
   }
-};
+}
 
-export default connect;
+export default connect

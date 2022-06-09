@@ -1,6 +1,10 @@
-import { Country } from '../models/index.js';
+const { Country } = require('../models/index')
 
-export const getAllCountries = async (req, res) => {
-  const data = await Country.find();
-  res.json(data);
-};
+const getAllCountries = async (req, res) => {
+  const data = await Country.find()
+  res.json(data)
+}
+
+module.exports = {
+  getAllCountries,
+}

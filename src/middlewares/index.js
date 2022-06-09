@@ -1,2 +1,7 @@
-export { default as swaggerMiddleware } from './swagger-middleware.js';
-export { default as authMiddleware } from './auth-middleware.js';
+const swaggerMiddleware = require('./swagger-middleware')
+const authMiddleware = require('./auth-middleware')
+
+module.exports = {
+  swaggerMiddleware,
+  authMiddleware,
+}

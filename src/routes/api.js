@@ -1,23 +1,23 @@
-import express from 'express';
-import {
+const express = require('express')
+const { authMiddleware } = require('../middlewares/index')
+const { getAllCountries } = require('../controllers/countries-controller')
+const {
+  sendPasswordRecoveryMail,
+  recoverPassword,
+} = require('../controllers/password-recovery-controller')
+const {
   register,
   login,
   confirmAccount,
-} from '../controllers/auth-controller.js';
-import {
-  sendPasswordRecoveryMail,
-  recoverPassword,
-} from '../controllers/password-recovery-controller.js';
-import { getAllCountries } from '../controllers/countries-controller.js';
-import { authMiddleware } from '../middlewares/index.js';
+} = require('../controllers/auth-controller')
 
-const router = express.Router();
+const router = express.Router()
 
-router.get('/countries', authMiddleware, getAllCountries);
-router.post('/register', register);
-router.post('/login', login);
-router.post('/confirm-account', confirmAccount);
-router.post('/password/send-recovery-link', sendPasswordRecoveryMail);
-router.post('/password/recover', recoverPassword);
+router.get('/countries', authMiddleware, getAllCountries)
+router.post('/register', register)
+router.post('/login', login)
+router.post('/confirm-account', confirmAccount)
+router.post('/password/send-recovery-link', sendPasswordRecoveryMail)
+router.post('/password/recover', recoverPassword)
 
-export default router;
+module.exports = router

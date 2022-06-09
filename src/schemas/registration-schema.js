@@ -1,30 +1,30 @@
-import Joi from 'joi';
-import { User } from '../models/index.js';
+const Joi = require('joi')
+const { User } = require('../models/index')
 
 const usernameShouldBeUniqueRule = (user) => (value, helper) => {
   if (!user) {
-    return value;
+    return value
   }
   if (user.username === value) {
-    return helper.message('this username is already taken.');
+    return helper.message('this username is already taken.')
   }
-  return value;
-};
+  return value
+}
 
 const emailIsAlreadyTaken = (user) => (value, helper) => {
   if (!user) {
-    return value;
+    return value
   }
 
   if (user.email === value) {
-    return helper.message('this email is already taken.');
+    return helper.message('this email is already taken.')
   }
-  return value;
-};
+  return value
+}
 
 const registerSchema = async (data) => {
-  const foundUserWithUsername = await User.findOne({ username: data.username });
-  const foundUserWithEmail = await User.findOne({ email: data.email });
+  const foundUserWithUsername = await User.findOne({ username: data.username })
+  const foundUserWithEmail = await User.findOne({ email: data.email })
 
   return Joi.object({
     username: Joi.string()
@@ -60,7 +60,7 @@ const registerSchema = async (data) => {
       'string.base': 'redirectOnConfirm field should be string.',
       'any.required': 'redirectOnConfirm field is required.',
     }),
-  });
-};
+  })
+}
 
-export default registerSchema;
+module.exports = registerSchema

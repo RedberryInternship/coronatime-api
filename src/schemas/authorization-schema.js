@@ -1,15 +1,15 @@
-import Joi from 'joi';
-import { User } from '../models/index.js';
+const Joi = require('joi')
+const { User } = require('../models/index')
 
 const determineIfUserExists = (user) => (value, helpers) => {
   if (!user) {
-    return helpers.message('there is no user with this username.');
+    return helpers.message('there is no user with this username.')
   }
-  return value;
-};
+  return value
+}
 
 const loginSchema = async (data) => {
-  const user = await User.findOne({ username: data.username });
+  const user = await User.findOne({ username: data.username })
 
   return Joi.object({
     username: Joi.string()
@@ -25,7 +25,7 @@ const loginSchema = async (data) => {
       'string.base': 'password field should be string.',
       'any.required': 'password field is required.',
     }),
-  });
-};
+  })
+}
 
-export default loginSchema;
+export default loginSchema

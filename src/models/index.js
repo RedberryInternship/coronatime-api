@@ -1,4 +1,11 @@
-export { default as Country } from './Country.js';
-export { default as User } from './User.js';
-export { default as AccountVerification } from './AccountVerification.js';
-export { default as PasswordRecovery } from './PasswordRecovery.js';
+const Country = require('./Country')
+const User = require('./User')
+const AccountVerification = require('./AccountVerification')
+const PasswordRecovery = require('./PasswordRecovery')
+
+module.exports = {
+  Country,
+  User,
+  AccountVerification,
+  PasswordRecovery,
+}

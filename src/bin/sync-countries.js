@@ -1,40 +1,40 @@
-import connectToDB from '../config/mongo.js';
-import chalk from 'chalk';
-import { getCountryStatisticsRequest } from '../services/index.js';
-import dotenv from 'dotenv';
+const dotenv = require('dotenv')
+const chalk = require('chalk')
+const connectToDB = require('../config/mongo')
+const { getCountryStatisticsRequest } = require('../services/index')
+const { Country } = require('../models/index')
 
-dotenv.config();
-import { Country } from '../models/index.js';
+dotenv.config()
 
-let mongoose = null;
+let mongoose = null
 
-(async () => {
+;(async () => {
   try {
-    mongoose = await connectToDB();
-    const countries = await Country.find();
+    mongoose = await connectToDB()
+    const countries = await Country.find()
 
     for (const country of countries) {
-      const { data } = await getCountryStatisticsRequest(country.code);
+      const { data } = await getCountryStatisticsRequest(country.code)
 
       const statistics = {
         confirmed: data.confirmed,
         recovered: data.recovered,
         critical: data.critical,
         deaths: data.deaths,
-      };
+      }
 
-      country.statistics = statistics;
-      await country.save();
+      country.statistics = statistics
+      await country.save()
     }
 
     console.log(
       chalk.whiteBright.bold.bgBlueBright.underline(
         'Countries have been synced!'
       )
-    );
+    )
   } catch (e) {
-    console.log(chalk.underline.red(e.message));
+    console.log(chalk.underline.red(e.message))
   } finally {
-    await mongoose.connection.close();
+    await mongoose.connection.close()
   }
-})();
+})()
